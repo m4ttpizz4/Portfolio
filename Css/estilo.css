@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+    --cor-fundo: #1a1a1a;
+    --cor-texto: #00ff00;
+    --cor-destaque: #00cc00;
+    --cor-link: #00ffff;
+    --cor-texto-secundario: #aaaaaa;
+    --cor-borda: #333333;
+    --cor-fundo-codigo: #222222;
+    --fonte-codigo: 'Fira Code', monospace;
+    --fonte-geral: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--fonte-codigo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.secao-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--cor-fundo-codigo);
+    border: 1px solid var(--cor-borda);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    position: relative;
+    animation: aparecer 1s ease-out;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+    color: var(--cor-destaque);
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+h2 {
+    font-size: 2.5em;
+    border-bottom: 2px dashed var(--cor-borda);
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.8em;
+}
+
+p {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 15px;
+}
+
+a {
+    color: var(--cor-link);
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: var(--cor-destaque);
+    text-shadow: 0 0 8px var(--cor-link);
+}
+
+header {
+    background-color: var(--cor-fundo-codigo);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--cor-borda);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--cor-texto);
+    text-shadow: 0 0 5px var(--cor-destaque);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--cor-texto);
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--cor-link);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.principal {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(45deg, var(--cor-fundo), #222);
+    border-bottom: 2px solid var(--cor-destaque);
+    position: relative;
+    overflow: hidden;
+}
+
+.principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 255, 0, 0.05) 0%, transparent 70%);
+    animation: pulsar 8s infinite alternate;
+}
+
+@keyframes pulsar {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.1); opacity: 0.6; }
+}
+
+
+.conteudo-principal {
+    z-index: 1;
+    animation: maquinaEscrever 4s steps(60, end) forwards, piscarCursor 0.75s step-end infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--cor-destaque);
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.conteudo-principal h1 {
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: var(--cor-texto);
+    text-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    animation: efeitoBrilho 2s infinite alternate;
+}
+
+@keyframes efeitoBrilho {
+    from { text-shadow: 0 0 10px rgba(0, 255, 0, 0.5); }
+    to { text-shadow: 0 0 20px rgba(0, 255, 0, 1); }
+}
+
+.conteudo-principal .slogan {
+    font-size: 1.5em;
+    color: var(--cor-texto-secundario);
+    margin-top: 0;
+}
+
+@keyframes maquinaEscrever {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes piscarCursor {
+    from, to { border-color: transparent }
+    50% { border-color: var(--cor-destaque) }
+}
+
+
+#botaoAcao {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: var(--fonte-codigo);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#botaoAcao:hover {
+    background-color: var(--cor-link);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 255, 255, 0.3);
+}
+
+.servico-grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.servico-item {
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.servico-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+}
+
+.servico-item h3 {
+    color: var(--cor-destaque);
+    margin-top: 0;
+    font-size: 1.6em;
+}
+
+.servico-item p {
+    color: var(--cor-texto-secundario);
+}
+
+.portfolio-grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.portfolio-item {
+    background-color: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.3);
+}
+
+.portfolio-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-destaque);
+}
+
+.portfolio-item h3 {
+    color: var(--cor-destaque);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.portfolio-item p {
+    color: var(--cor-texto-secundario);
+    margin-bottom: 15px;
+}
+
+.link-projeto {
+    display: inline-block;
+    background-color: var(--cor-link);
+    color: var(--cor-fundo);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.link-projeto:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    text-shadow: none;
+}
+
+.conteudo-sobre {
+    text-align: justify;
+    color: var(--cor-texto-secundario);
+    font-size: 1.1em;
+}
+
+footer {
+    background-color: var(--cor-fundo-codigo);
+    color: var(--cor-texto-secundario);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    border-top: 1px solid var(--cor-borda);
+    font-size: 0.9em;
+}
+
+.icones-sociais {
+    margin-bottom: 15px;
+}
+
+.icones-sociais a {
+    display: inline-block;
+    margin: 0 10px;
+    color: var(--cor-texto);
+    font-size: 2em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.icones-sociais a:hover {
+    color: var(--cor-link);
+    transform: scale(1.1);
+    text-shadow: 0 0 10px var(--cor-link);
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 15px 10px 15px;
+    }
+
+    .conteudo-principal h1 {
+        font-size: 2.5em;
+    }
+
+    .conteudo-principal .slogan {
+        font-size: 1.2em;
+    }
+
+    .secao-container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .servico-grade, .portfolio-grade {
+        grid-template-columns: 1fr;
+    }
+}
