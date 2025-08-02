@@ -159,15 +159,14 @@ nav ul li a:hover::after {
     100% { transform: scale(1.1); opacity: 0.6; }
 }
 
-
 .conteudo-principal {
     z-index: 1;
-    animation: maquinaEscrever 4s steps(60, end) forwards, piscarCursor 0.75s step-end infinite;
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid var(--cor-destaque);
     max-width: fit-content;
     margin: 0 auto;
+    animation: maquinaEscrever 4s steps(60, end) forwards, piscarCursor 0.75s step-end infinite;
 }
 
 .conteudo-principal h1 {
@@ -187,7 +186,19 @@ nav ul li a:hover::after {
     font-size: 1.5em;
     color: var(--cor-texto-secundario);
     margin-top: 0;
+    white-space: nowrap; /* Garante que a animação de digitação funcione em uma linha */
+    overflow: hidden; /* Oculta o texto que excede a largura */
+    width: 0; /* Começa com largura zero para a animação */
+    border-right: 2px solid var(--cor-destaque); /* O cursor de digitação */
+    animation: maquinaEscreverSlogan 4s steps(50, end) forwards, piscarCursor 0.75s step-end infinite;
+    max-width: 100%; /* Permite que o texto quebre em várias linhas se necessário */
 }
+
+@keyframes maquinaEscreverSlogan {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
 
 @keyframes maquinaEscrever {
     from { width: 0 }
@@ -198,7 +209,6 @@ nav ul li a:hover::after {
     from, to { border-color: transparent }
     50% { border-color: var(--cor-destaque) }
 }
-
 
 #botaoAcao {
     background-color: var(--cor-destaque);
@@ -365,7 +375,11 @@ footer {
     }
 
     .conteudo-principal .slogan {
-        font-size: 1.2em;
+        font-size: 1em;
+        white-space: normal;
+        animation: none;
+        border-right: none;
+        width: auto;
     }
 
     .secao-container {
